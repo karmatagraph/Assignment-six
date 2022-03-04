@@ -21,10 +21,19 @@ class ViewController: UIViewController {
 
     @IBAction func chooseBtnClicked(_ sender: UIButton) {
         let secondScreen = storyboard?.instantiateViewController(withIdentifier: "SecondVC") as! SecondVC
+        secondScreen.selectDelegate = self
         present(secondScreen, animated: true, completion: nil)
         
     }
     
     
+}
+
+extension ViewController: SelctionDelagate{
+    func didTapChoice(image: UIImage, name: String, color: UIColor) {
+        imgView.image = image
+        chosenLabel.text = name
+        view.backgroundColor = color
+    }
 }
 
